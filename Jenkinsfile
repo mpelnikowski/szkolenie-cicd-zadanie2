@@ -11,6 +11,7 @@ pipeline {
 
             steps {
                 git branch: 'main', url: 'https://github.com/mpelnikowski/szkolenie-cicd-jenkins-gitlab-example.git'
+                sh 'chmod +x mvnw '
                 sh 'mvn clean spring-boot:build-image'
                 cleanWs()
             }    
