@@ -8,14 +8,10 @@ pipeline {
 
     stages {
         stage('Build') {
-            when {
-                not {
-                    changelog '.*^\\[ci skip\\] .+$'
-                }
-            }
+
             steps {
                 git branch: 'main', url: 'https://github.com/mpelnikowski/szkolenie-cicd-jenkins-gitlab-example.git'
-                sh 'mvn clean verify'
+                sh 'mvn clean spring-boot:build-image'
                 cleanWs()
             }    
         }
