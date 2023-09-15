@@ -10,10 +10,11 @@ pipeline {
         stage('Build') {
 
             steps {
-                git branch: 'main', url: 'https://github.com/mpelnikowski/szkolenie-cicd-jenkins-gitlab-example.git'
-                sh 'chmod a+x /usr/local/apache-maven/apache-maven-3.9.4/bin/mvn'
-                sh 'mvn clean spring-boot:build-image'
-                cleanWs()
+                sh 'mvn -version'
+                // git branch: 'main', url: 'https://github.com/mpelnikowski/szkolenie-cicd-jenkins-gitlab-example.git'
+                // sh 'chmod a+x /usr/local/apache-maven/apache-maven-3.9.4/bin/mvn'
+                // sh 'mvn clean spring-boot:build-image'
+                // cleanWs()
             }    
         }
     }  
