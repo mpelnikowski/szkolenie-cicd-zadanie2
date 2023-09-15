@@ -14,13 +14,13 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-                scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
                 // Get some code from a GitHub repository
                 git branch: 'main', url: 'https://github.com/mpelnikowski/szkolenie-cicd-jenkins-gitlab-example.git'
             }
         }
         stage('Build') {
             steps {
+                scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
                 sh 'mvn clean verify'
                 //slackSend 'Build Started - ${env.BUILD_TAG} ${env.BUILD_NUMBER}'
             }    
